@@ -109,19 +109,64 @@ Q(t+1)=T′Q(t)+TQ(t)′
 ### PROGRAM 
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: dharshan v
+RegisterNumber: 212222230031 
 */
-
-
-
-
-
-
+## SR FLIP FLOPS:
+```
+module de05(S,R,CLK,Q,QBAR);
+input S,R,CLK;
+output Q,QBAR;
+wire X,Y;
+nand(X,S,CLK);
+nand(Y,R,CLK);
+nand(Q,X,QBAR);
+nand(QBAR,Y,Q);
+endmodule
+```
+## JK FLIP FLOPS:
+```
+module de051(J,K,CLK,Q,QBAR);
+input J,K,CLK;
+output Q,QBAR;
+wire P,S;
+nand(P,J,CLK,QBAR);
+nand(S,K,CLK,Q);
+nand(Q,P,QBAR);
+nand(QBAR,S,Q);
+endmodule
+```
+## D FLIP FLOPS:
+```
+module de052(D,CLK,Q,QBAR);
+input D,CLK;
+output Q,QBAR;
+assign DBAR=~D;
+wire X,Y;
+nand(X,D,CLK);
+nand(Y,DBAR,CLK);
+nand(Q,X,QBAR);
+nand(QBAR,Y,Q);
+endmodule
+```
+## T FLIP FLOPS:
+```
+module de54(T,CLK,Q,QBAR);
+input T,CLK;
+output Q,QBAR;
+wire S,R;
+nand(S,T,CLK,QBAR);
+nand(R,T,CLK,Q);
+nand(Q,S,QBAR);
+nand(QBAR,R,Q);
+endmodule
+```
 ### RTL LOGIC FOR FLIPFLOPS 
+![Screenshot 2023-05-22 180412](https://github.com/Dharshan011/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497491/7a2d9a81-0307-4219-afaf-27f427548b40)
 
 
 
+![Screenshot 2023-05-22 180431](https://github.com/Dharshan011/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497491/05b6d86d-64f1-4cee-ac47-b3b62864f026)
 
 
 
@@ -130,7 +175,9 @@ RegisterNumber:
 
 ### TIMING DIGRAMS FOR FLIP FLOPS 
 
+![Screenshot 2023-05-22 180443](https://github.com/Dharshan011/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497491/04173065-e20d-4adf-b6c9-d37bf74042b7)
 
+![Screenshot 2023-05-22 180453](https://github.com/Dharshan011/Experiment--05-Implementation-of-flipflops-using-verilog/assets/113497491/8b526af9-581b-4282-a1e6-0358971ac638)
 
 
 
@@ -138,3 +185,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+Hence all the flipflops are implemented using verilog and their functionality has been validated using their functional tables.
